@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tools and Applications - PROEAZY">
+    <title>Tools - PROEAZY</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .tools-page {
+            min-height: 100vh;
+            padding: 100px 20px 40px;
+            animation: pageEnter 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            will-change: transform, opacity;
+            transform: translateZ(0);
+        }
+
+        .tools-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tools-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .tools-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .products-grid {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            will-change: transform;
+            transform: translateZ(0);
+            opacity: 0;
+            animation: cardFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .product-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .product-card:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .product-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px) translateZ(0);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) translateZ(0);
+            }
+        }
+
+        .product-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+            border-color: rgba(0, 136, 204, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 136, 204, 0.2);
+        }
+
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            min-width: 40px;
+            min-height: 40px;
+        }
+
+        .product-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .product-icon.website-icon {
+            background: linear-gradient(135deg, #10B981, #059669);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .product-icon.website-icon svg {
+            color: white;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .download-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            margin-top: 5px;
+        }
+
+        .download-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .website-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            color: #10B981;
+            margin-top: 5px;
+        }
+
+        .website-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .back-button:hover {
+            opacity: 1;
+            transform: translateX(-4px);
+        }
+
+        .back-button svg {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="tools-page">
+            <a href="index.html" class="back-button">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                <span>Back to Home</span>
+            </a>
+
+            <div class="tools-header">
+                <h1>Tools & Applications</h1>
+                <p>Download our free tools and applications</p>
+            </div>
+
+            <div class="products-grid">
+                <a href="https://drive.google.com/file/d/1zUh7IIIWRvOoBEa7_nivLT6qbXa1S2SL/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="product-card">
+                    <div class="product-icon">
+                        <img src="images/YT.png" alt="YouTube Downloader Icon">
+                    </div>
+                    <div class="product-info">
+                        <h3>Youtube Downloader</h3>
+                        <p>You Can Download Youtube Videos In HD Quality</p>
+                        <div class="download-badge">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            <span>Download from Drive</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.rocksdanister.com/lively/" target="_blank" rel="noopener noreferrer" class="product-card">
+                    <div class="product-icon">
+                        <img src="images/live.png" alt="Lively Wallpaper Icon">
+                    </div>
+                    <div class="product-info">
+                        <h3>Lively Wallpaper</h3>
+                        <p>Animated desktop wallpapers, bring your desktop to life!</p>
+                        <div class="website-badge">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+                            </svg>
+                            <span>Visit Website</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

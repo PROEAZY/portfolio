@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Games - PROEAZY">
+    <title>Games - PROEAZY</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .games-page {
+            min-height: 100vh;
+            padding: 100px 20px 40px;
+            animation: pageEnter 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            will-change: transform, opacity;
+            transform: translateZ(0);
+        }
+
+        .games-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .games-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .games-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .products-grid {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            will-change: transform;
+            transform: translateZ(0);
+            opacity: 0;
+            animation: cardFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .product-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .product-card:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px) translateZ(0);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) translateZ(0);
+            }
+        }
+
+        .product-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.2);
+        }
+
+        .section-card:hover {
+            border-color: rgba(76, 175, 80, 0.3);
+            box-shadow: 0 4px 20px rgba(76, 175, 80, 0.2);
+        }
+
+        .android-icon {
+            background: linear-gradient(135deg, #4CAF50, #388E3C);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+
+        .android-icon svg {
+            color: white;
+        }
+
+        .games-section {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            min-width: 40px;
+            min-height: 40px;
+        }
+
+        .product-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .product-icon.website-icon {
+            background: linear-gradient(135deg, #10B981, #059669);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .product-icon.website-icon svg {
+            color: white;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .download-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            color: #8B5CF6;
+            margin-top: 5px;
+        }
+
+        .download-badge.android-badge {
+            color: #4CAF50;
+        }
+
+        .download-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .website-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            color: #10B981;
+            margin-top: 5px;
+        }
+
+        .website-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .back-button:hover {
+            opacity: 1;
+            transform: translateX(-4px);
+        }
+
+        .back-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .section-card:hover {
+            border-color: rgba(76, 175, 80, 0.3);
+            box-shadow: 0 4px 20px rgba(76, 175, 80, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="games-page">
+            <a href="index.html" class="back-button">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                <span>Back to Home</span>
+            </a>
+
+            <div class="games-header">
+                <h1>Games</h1>
+                <p>Explore our collection of games</p>
+            </div>
+
+            <div class="products-grid">
+                <a href="android-games.html" class="product-card section-card">
+                    <div class="product-icon android-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993 0 .5511-.4483.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.8508 12 7.8508s-3.5902.3931-5.1349 1.2297L4.8429 5.5773a.4161.4161 0 00-.5676-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.186.8535 12.3064 0 13.8176v6.5809h24v-6.5809c-.8535-1.5112-2.6889-2.6316-5.1225-3.4962M12 4.5897c.4059 0 .7358-.33.7358-.7358s-.33-.7358-.7358-.7358-.7358.33-.7358.7358.33.7358.7358.7358m-3.8437 1.2218a.9324.9324 0 01-.8437-.5386.9322.9322 0 01.5386-1.2739.9324.9324 0 011.2739.5386c.1855.3216.1855.7159 0 1.0375a.9324.9324 0 01-.4302.2364m7.6874 0a.9324.9324 0 01-.4302-.2364.9322.9322 0 010-1.0375.9324.9324 0 011.2739-.5386.9322.9322 0 01.5386 1.2739.9324.9324 0 01-.4303.2364M24 20.3985H0v-1.8292h24v1.8292z"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3>ANDROID GAMES</h3>
+                        <p>Download Android games and APK files</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+

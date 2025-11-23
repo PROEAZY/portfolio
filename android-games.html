@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Android Games - PROEAZY">
+    <title>Android Games - PROEAZY</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .android-games-page {
+            min-height: 100vh;
+            padding: 100px 20px 40px;
+            animation: pageEnter 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            will-change: transform, opacity;
+            transform: translateZ(0);
+        }
+
+        .android-games-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .android-games-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .android-games-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .products-grid {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            will-change: transform;
+            transform: translateZ(0);
+            opacity: 0;
+            animation: cardFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .product-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .product-card:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .product-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px) translateZ(0);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) translateZ(0);
+            }
+        }
+
+        .product-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+            border-color: rgba(76, 175, 80, 0.3);
+            box-shadow: 0 4px 20px rgba(76, 175, 80, 0.2);
+        }
+
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            min-width: 40px;
+            min-height: 40px;
+        }
+
+        .product-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .download-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            color: #4CAF50;
+            margin-top: 5px;
+        }
+
+        .download-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .telegram-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            color: #0088cc;
+            margin-top: 5px;
+        }
+
+        .telegram-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .back-button:hover {
+            opacity: 1;
+            transform: translateX(-4px);
+        }
+
+        .back-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .product-card:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="android-games-page">
+            <a href="games.html" class="back-button">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                <span>Back to Games</span>
+            </a>
+
+            <div class="android-games-header">
+                <h1>Android Games</h1>
+                <p>Download the best Android games</p>
+            </div>
+
+            <div class="products-grid">
+                <a href="games-apk/LIMBO-v1.21-full-apkvision.apk" download class="product-card">
+                    <div class="product-icon">
+                        <img src="images/lb.png" alt="LIMBO Game Icon">
+                    </div>
+                    <div class="product-info">
+                        <h3>LIMBO</h3>
+                        <p>An atmospheric puzzle-platformer adventure game</p>
+                        <div class="download-badge">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            <span>Download APK</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://t.me/+nsZmvL49zJA0ODll" target="_blank" rel="noopener noreferrer" class="product-card">
+                    <div class="product-icon">
+                        <img src="images/mc.png" alt="Minecraft Game Icon">
+                    </div>
+                    <div class="product-info">
+                        <h3>Minecraft</h3>
+                        <p>Build, explore, and survive in infinite worlds</p>
+                        <div class="telegram-badge">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.61-1.13 7.44-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.13-.31-1.09-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                            </svg>
+                            <span>Download from Telegram</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

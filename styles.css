@@ -39,6 +39,40 @@ body {
     width: 100%;
     max-width: 420px;
     margin: 0 auto;
+    /* GPU acceleration for smooth animations */
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* Page transition animations - optimized for mobile */
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(20px) translateZ(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+    }
+}
+
+@keyframes pageExit {
+    from {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px) translateZ(0);
+    }
+}
+
+.page-enter {
+    animation: pageEnter 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.page-exit {
+    animation: pageExit 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Profile Section */
@@ -104,6 +138,9 @@ body {
     transition: var(--transition);
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
+    /* GPU acceleration */
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .social-icon svg {
@@ -136,10 +173,13 @@ body {
     border-radius: var(--border-radius);
     text-decoration: none;
     color: var(--text-primary);
-    transition: var(--transition);
+    transition: transform 0.2s ease, background 0.2s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
     overflow: hidden;
+    /* GPU acceleration */
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .link-card::before {
@@ -175,6 +215,9 @@ body {
     transition: var(--transition);
     position: relative;
     animation: iconPulse 2s ease-in-out infinite;
+    /* GPU acceleration */
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .link-icon svg {
@@ -204,6 +247,18 @@ body {
     background: linear-gradient(135deg, #8B5CF6, #7C3AED);
     box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
     animation: iconPulse 2s ease-in-out infinite, gamesGlow 3s ease-in-out infinite;
+}
+
+@media (max-width: 480px) {
+    .games-icon,
+    .tools-icon,
+    .resources-icon,
+    .wallpaper-icon,
+    .apps-icon,
+    .contact-icon,
+    .android-icon {
+        animation: none !important;
+    }
 }
 
 @keyframes gamesGlow {
@@ -289,6 +344,21 @@ body {
     }
     50% {
         box-shadow: 0 4px 20px rgba(99, 102, 241, 0.6);
+    }
+}
+
+.android-icon {
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    animation: iconPulse 2s ease-in-out infinite, androidGlow 3s ease-in-out infinite;
+}
+
+@keyframes androidGlow {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(76, 175, 80, 0.6);
     }
 }
 
@@ -378,7 +448,7 @@ body {
     background: var(--bg-card-hover);
 }
 
-/* Responsive Design */
+/* Performance Optimizations for Mobile */
 @media (max-width: 480px) {
     body {
         padding: 10px;
@@ -403,6 +473,8 @@ body {
     .link-icon {
         width: 44px;
         height: 44px;
+        /* Reduce animations on mobile */
+        animation: none !important;
     }
 
     .link-icon svg {
@@ -412,6 +484,71 @@ body {
 
     .link-text {
         font-size: 0.95rem;
+    }
+
+    /* Disable expensive backdrop-filter on mobile */
+    .social-icon {
+        backdrop-filter: none;
+    }
+
+    /* Reduce hover effects on mobile */
+    .link-card:hover {
+        transform: none;
+    }
+
+    .link-card:hover .link-icon {
+        transform: none;
+        animation: none;
+    }
+
+    .link-card:hover .link-icon svg {
+        transform: none;
+    }
+
+    /* Disable shimmer animation on mobile */
+    .wallpaper-icon::after {
+        display: none;
+    }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Mobile optimization - lighter animations */
+@media (max-width: 480px) {
+    .page-enter,
+    .android-games-page,
+    .games-page,
+    .tools-page,
+    .contact-page {
+        animation-duration: 0.2s !important;
+    }
+
+    .product-card,
+    .contact-option {
+        animation-duration: 0.25s !important;
+    }
+
+    .product-card:nth-child(1),
+    .contact-option:nth-child(1) {
+        animation-delay: 0.05s !important;
+    }
+
+    .product-card:nth-child(2),
+    .contact-option:nth-child(2) {
+        animation-delay: 0.1s !important;
+    }
+
+    .product-card:nth-child(3) {
+        animation-delay: 0.15s !important;
     }
 }
 
