@@ -260,6 +260,8 @@ body {
     .games-icon,
     .tools-icon,
     .resources-icon,
+    .movies-icon,
+    .anime-icon,
     .wallpaper-icon,
     .apps-icon,
     .contact-icon,
@@ -304,6 +306,36 @@ body {
     }
     50% {
         box-shadow: 0 4px 20px rgba(252, 175, 69, 0.6);
+    }
+}
+
+.movies-icon {
+    background: linear-gradient(135deg, #E1306C, #C13584);
+    box-shadow: 0 4px 12px rgba(225, 48, 108, 0.3);
+    animation: iconPulse 2s ease-in-out infinite, moviesGlow 3s ease-in-out infinite;
+}
+
+@keyframes moviesGlow {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(225, 48, 108, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(225, 48, 108, 0.6);
+    }
+}
+
+.anime-icon {
+    background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    animation: iconPulse 2s ease-in-out infinite, animeGlow 3s ease-in-out infinite;
+}
+
+@keyframes animeGlow {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(139, 92, 246, 0.6);
     }
 }
 
