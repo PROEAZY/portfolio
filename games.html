@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Games - PROEAZY">
     <title>Games - PROEAZY</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="styles.css">
     <style>
         .games-page {
@@ -94,6 +96,15 @@
         }
 
         .android-icon svg {
+            color: white;
+        }
+
+        .pc-icon {
+            background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .pc-icon svg {
             color: white;
         }
 
@@ -236,8 +247,19 @@
                 <h1>Games</h1>
                 <p>Explore our collection of games</p>
             </div>
-
             <div class="products-grid">
+            <a href="pc-games.html" class="product-card section-card">
+                <div class="product-icon pc-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/>
+                        <path d="M8 19h8v1H8z"/>
+                    </svg>
+                </div>
+                <div class="product-info">
+                    <h3>PC GAMES</h3>
+                    <p>Download top PC games and installers</p>
+                </div>
+            </a>
                 <a href="android-games.html" class="product-card section-card">
                     <div class="product-icon android-icon">
                         <svg viewBox="0 0 24 24" fill="currentColor">
