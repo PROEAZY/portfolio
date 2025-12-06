@@ -13,25 +13,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Optimized ripple effect (disabled on mobile for performance)
-const isMobileDevice = window.innerWidth <= 480 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+// Consolidated Mobile Check
+const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-if (!isMobileDevice) {
+// Optimized ripple effect (disabled on mobile for performance)
+if (!isMobile) {
     // Add ripple effect on link card click (desktop only)
     document.querySelectorAll('.link-card').forEach(card => {
-        card.addEventListener('click', function(e) {
+        card.addEventListener('click', function (e) {
             const ripple = document.createElement('span');
             const rect = this.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
             const x = e.clientX - rect.left - size / 2;
             const y = e.clientY - rect.top - size / 2;
-            
+
             ripple.style.width = ripple.style.height = size + 'px';
             ripple.style.left = x + 'px';
             ripple.style.top = y + 'px';
             ripple.classList.add('ripple');
-            
+
             this.appendChild(ripple);
-            
+
             setTimeout(() => {
                 ripple.remove();
             }, 600);
@@ -67,7 +69,7 @@ document.head.appendChild(style);
 
 // Optimized animations for mobile performance
 const linkCards = document.querySelectorAll('.link-card');
-const isMobile = window.innerWidth <= 480 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+// isMobile is already defined above
 
 if (!isMobile) {
     // Only run heavy animations on desktop
@@ -107,7 +109,7 @@ if (!isMobile) {
 
 // Prevent default behavior for internal links that don't have targets
 document.querySelectorAll('.link-card[href^="#"]').forEach(card => {
-    card.addEventListener('click', function(e) {
+    card.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
         if (href === '#' || href === '#works' || href === '#resources') {
             // These are placeholder links - you can add actual functionality later
@@ -116,22 +118,5 @@ document.querySelectorAll('.link-card[href^="#"]').forEach(card => {
     });
 });
 
-// Smooth page transitions for internal links
-document.querySelectorAll('a[href$=".html"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        // Only apply to internal links (not external or anchors)
-        if (href && !href.startsWith('http') && !href.startsWith('#') && href.endsWith('.html')) {
-            const currentPage = document.querySelector('.games-page, .android-games-page, .tools-page, .contact-page, .app-container');
-            if (currentPage) {
-                // Add exit animation
-                currentPage.style.animation = 'pageExit 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards';
-                
-                // Small delay before navigation for smooth transition
-                setTimeout(() => {
-                    window.location.href = href;
-                }, 200);
-            }
-        }
-    });
-});
+// Internal links transition block removed for performance (instant navigation preferred)
+
