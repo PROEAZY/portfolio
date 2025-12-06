@@ -3,6 +3,25 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Custom Scrollbar for PC */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color-hover);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue);
 }
 
 :root {
@@ -50,8 +69,8 @@ body {
         radial-gradient(at 0% 100%, rgba(0, 230, 118, 0.1) 0px, transparent 50%);
     background-size: 120% 120%;
     /* Reduced size to reduce paint area */
-    animation: backgroundShift 20s ease infinite alternate;
-    /* Slower animation is smoother */
+    /* animation: backgroundShift 20s ease infinite alternate; */
+    /* Disabled animation to fix lag on desktop */
     color: var(--text-primary);
     min-height: 100vh;
     display: flex;
@@ -687,4 +706,145 @@ p {
 .android-icon {
     background: linear-gradient(135deg, #4ade80, #16a34a);
     box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+}
+
+/* ========================================= */
+/* DESKTOP ENHANCEMENTS (Screens > 1024px)   */
+/* ========================================= */
+
+@media (min-width: 1024px) {
+
+    /* 1. Main Layout Structure */
+    .app-container {
+        max-width: 1200px;
+        padding: 0 40px;
+    }
+
+    /* Home Page: Split Layout (Profile Left, Links Right) */
+    /* Target via structure since we can't easily add classes right now */
+    body:has(.profile-section) .app-container {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: 100px;
+        align-items: start;
+        padding-top: 60px;
+    }
+
+    /* Left Column: Fixed Profile */
+    .profile-section {
+        position: sticky;
+        top: 60px;
+        text-align: center;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: slideInLeft 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .logo-container {
+        margin: 0 0 24px 0;
+        display: block;
+    }
+
+    .logo-image {
+        max-width: 140px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .profile-name {
+        justify-content: center;
+        font-size: 2.2rem;
+        margin: 0 0 20px 0;
+        width: 100%;
+    }
+
+    .social-icons {
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    /* Right Column: Links Grid */
+    .links-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 0;
+        animation: slideInRight 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .link-card {
+        padding: 24px;
+        height: 100%;
+    }
+
+    .link-text {
+        font-size: 1.2rem;
+    }
+
+    /* 2. Sub-Pages: Grid Layout */
+    .products-grid {
+        max-width: 100%;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+    }
+
+    .games-header,
+    .software-header,
+    .tools-header,
+    .anime-header,
+    .free-movies-header,
+    .free-header,
+    .android-games-header,
+    .android-software-header,
+    .pc-games-header,
+    .pc-software-header {
+        text-align: left;
+        margin-bottom: 50px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .back-button {
+        background: transparent;
+        font-size: 1rem;
+        padding-left: 0;
+        margin-bottom: 20px;
+    }
+
+    /* Free Stuff Page Fix */
+    .free-stuff-page {
+        max-width: 100%;
+    }
 }
