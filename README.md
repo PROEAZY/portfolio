@@ -33,14 +33,14 @@
 
 ## 📂 Folder Structure
 
-```bash
-PROEAZY-Portfolio/
-├── index.html
-├── assets/
-│   ├── css/
-│   │   └── style.css
-│   ├── img/
-│   │   ├── profile.png
-│   │   ├── icons/
-│   │   └── ...
-└── README.md
+mine-website/
+│── index.html
+│── style.css
+│── script.js
+│── assets/
+│   ├── icons/
+│   ├── images/
+│── downloads/
+│── LICENSE
+│── README.md
+
