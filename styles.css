@@ -47,12 +47,12 @@
     --border-color: rgba(255, 255, 255, 0.08);
     --border-color-hover: rgba(255, 255, 255, 0.2);
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    --font-main: 'Outfit', sans-serif;
+    --font-main: 'Kanit', sans-serif;
     --glass-blur: blur(12px);
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -155,6 +155,7 @@ body {
 .logo-image {
     max-width: 110px;
     height: auto;
+    aspect-ratio: 1 / 1;
     display: block;
     margin: 0 auto;
     border-radius: 24px;
@@ -503,6 +504,7 @@ p {
     width: 54px;
     /* Medium size */
     height: 54px;
+    aspect-ratio: 1 / 1;
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.05);
     /* Default background */
